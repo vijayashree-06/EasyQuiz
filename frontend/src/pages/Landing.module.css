@@ -1,0 +1,839 @@
+/* =========================================
+   EASYQUIZ - LANDING PAGE
+   ========================================= */
+
+.page {
+  min-height: calc(100vh - 39px);
+  width: 100%;
+
+  background:
+    linear-gradient(rgba(150, 80, 230, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(150, 80, 230, 0.025) 1px, transparent 1px),
+    #0d0d0f;
+
+  background-size: 38px 38px;
+
+  color: #f5f3f8;
+  overflow: hidden;
+}
+
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
+
+.hero {
+  width: 100%;
+  min-height: 780px;
+
+  padding: 70px 20px 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* AI BADGE */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 15px;
+
+  border: 1px solid rgba(168, 85, 247, 0.28);
+  border-radius: 999px;
+
+  background: rgba(120, 50, 220, 0.08);
+
+  color: #91879e;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.badgeDot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #a45bf0;
+
+  box-shadow:
+    0 0 8px rgba(164, 91, 240, 0.8),
+    0 0 16px rgba(164, 91, 240, 0.35);
+}
+
+
+/* MAIN HEADING */
+
+.hero h1 {
+  margin-top: 28px;
+
+  max-width: 850px;
+
+  font-size: clamp(52px, 5vw, 72px);
+  line-height: 1.06;
+
+  letter-spacing: -3px;
+
+  font-weight: 800;
+
+  color: #f5f3f8;
+}
+
+.hero h1 span {
+  background: linear-gradient(
+    90deg,
+    #a855f7,
+    #c65af2,
+    #d65af0
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+
+/* HERO DESCRIPTION */
+
+.heroDescription {
+  margin-top: 22px;
+
+  max-width: 760px;
+
+  color: #918a9e;
+
+  font-size: 16px;
+  line-height: 1.7;
+
+  font-weight: 400;
+}
+
+
+/* HERO BUTTONS */
+
+.heroButtons {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  margin-top: 28px;
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 48px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 0 27px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+/* PRIMARY BUTTON */
+
+.primaryButton {
+  color: #ffffff;
+
+  background: linear-gradient(
+    100deg,
+    #9b55ed,
+    #c752ee
+  );
+
+  border: 1px solid transparent;
+
+  box-shadow:
+    0 8px 25px rgba(151, 73, 236, 0.18);
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 32px rgba(151, 73, 236, 0.32);
+}
+
+
+/* SECONDARY BUTTON */
+
+.secondaryButton {
+  color: #ddd9e4;
+
+  background: rgba(15, 15, 19, 0.8);
+
+  border: 1px solid #282630;
+}
+
+.secondaryButton:hover {
+  color: #ffffff;
+
+  border-color: #68428e;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   VIDEO / YOUTUBE CARD
+   ========================================= */
+
+.videoCard {
+  width: min(840px, 90vw);
+  height: 355px;
+
+  margin-top: 50px;
+
+  padding: 4px;
+
+  border: 1px solid #8b43c7;
+
+  border-radius: 10px;
+
+  background: #121216;
+
+  box-shadow:
+    0 0 25px rgba(128, 56, 190, 0.08),
+    0 0 70px rgba(128, 56, 190, 0.035);
+}
+
+.videoInner {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 6px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(130, 58, 190, 0.035),
+      transparent 50%
+    ),
+    #151519;
+}
+
+
+/* PLAY BUTTON */
+
+.playButton {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: linear-gradient(
+    135deg,
+    #a45af0,
+    #c14df0
+  );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 8px 25px rgba(174, 77, 240, 0.25);
+}
+
+.videoInner p {
+  margin-top: 14px;
+
+  color: #81798d;
+
+  font-size: 13px;
+
+  font-weight: 400;
+}
+
+
+/* =========================================
+   HOW IT WORKS
+   ========================================= */
+
+.howSection {
+  width: 100%;
+  max-width: 1160px;
+
+  margin: 0 auto;
+
+  padding: 10px 30px 125px;
+}
+
+
+/* SECTION HEADING */
+
+.sectionHeader {
+  text-align: center;
+}
+
+.sectionHeader h2 {
+  font-size: 38px;
+
+  line-height: 1.2;
+
+  font-weight: 750;
+
+  letter-spacing: -1.2px;
+
+  color: #f3f0f6;
+}
+
+.sectionHeader h2 span {
+  background: linear-gradient(
+    90deg,
+    #a855f7,
+    #d15af0
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.sectionHeader p {
+  margin-top: 13px;
+
+  color: #81798d;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   STEPS GRID
+   ========================================= */
+
+.stepsGrid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 14px;
+
+  margin-top: 40px;
+}
+
+
+/* STEP CARD */
+
+.stepCard {
+  min-height: 155px;
+
+  padding: 20px;
+
+  border: 1px solid #25232d;
+
+  border-radius: 8px;
+
+  background: rgba(17, 17, 21, 0.9);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.stepCard:hover {
+  transform: translateY(-3px);
+
+  border-color: #59327c;
+
+  box-shadow:
+    0 10px 30px rgba(91, 45, 130, 0.08);
+}
+
+
+/* ICON */
+
+.iconBox {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 7px;
+
+  background: rgba(136, 67, 208, 0.2);
+
+  color: #a45cf1;
+}
+
+
+/* STEP LABEL */
+
+.stepLabel {
+  margin-top: 12px;
+
+  color: #9b5cf0;
+
+  font-size: 11px;
+
+  font-weight: 500;
+}
+
+
+/* CARD TITLE */
+
+.stepCard h3 {
+  margin-top: 6px;
+
+  color: #eeeaf3;
+
+  font-size: 16px;
+
+  line-height: 1.35;
+
+  font-weight: 650;
+}
+
+
+/* CARD DESCRIPTION */
+
+.stepCard p {
+  margin-top: 8px;
+
+  color: #81798d;
+
+  font-size: 13px;
+
+  line-height: 1.55;
+
+  font-weight: 400;
+}
+
+
+/* =========================================
+   CTA SECTION
+   ========================================= */
+
+.ctaSection {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 0 20px 70px;
+}
+
+
+.ctaCard {
+  width: min(650px, 100%);
+
+  padding: 38px 35px;
+
+  text-align: center;
+
+  border: 1px solid #7540a0;
+
+  border-radius: 9px;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(141, 64, 220, 0.08),
+      transparent 60%
+    ),
+    #121216;
+
+  box-shadow:
+    0 0 35px rgba(113, 50, 160, 0.04);
+}
+
+
+/* CTA HEADING */
+
+.ctaCard h2 {
+  font-size: 34px;
+
+  line-height: 1.2;
+
+  letter-spacing: -1px;
+
+  font-weight: 750;
+
+  color: #f3f0f6;
+}
+
+.ctaCard h2 span {
+  background: linear-gradient(
+    90deg,
+    #a855f7,
+    #d15af0
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+
+/* CTA DESCRIPTION */
+
+.ctaCard p {
+  margin-top: 13px;
+
+  color: #81798d;
+
+  font-size: 13px;
+
+  line-height: 1.65;
+}
+
+
+/* CTA BUTTON */
+
+.ctaButton {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 22px;
+
+  min-height: 42px;
+
+  padding: 0 27px;
+
+  border-radius: 8px;
+
+  background: linear-gradient(
+    100deg,
+    #9d57ee,
+    #cf54eb
+  );
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  box-shadow:
+    0 8px 22px rgba(151, 73, 236, 0.2);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 30px rgba(151, 73, 236, 0.3);
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.footer {
+  width: 100%;
+
+  min-height: 76px;
+
+  padding: 0 max(50px, 5vw);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-top: 1px solid #211f27;
+
+  background:
+    radial-gradient(
+      circle at 70% 100%,
+      rgba(117, 46, 177, 0.1),
+      transparent 35%
+    ),
+    #0d0d0f;
+}
+
+
+/* FOOTER LOGO */
+
+.footerLogo {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #e8e4ec;
+
+  font-size: 13px;
+
+  font-weight: 650;
+}
+
+
+.footerLogoIcon {
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 5px;
+
+  background: #a65af0;
+
+  color: #ffffff;
+}
+
+
+/* FOOTER TEXT */
+
+.footer p {
+  color: #655f6e;
+
+  font-size: 11px;
+
+  font-weight: 400;
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 1000px) {
+
+  .hero h1 {
+    font-size: 58px;
+  }
+
+  .videoCard {
+    width: min(800px, 90vw);
+  }
+
+  .howSection {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .stepsGrid {
+    gap: 12px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+  .hero {
+    min-height: auto;
+
+    padding:
+      55px 18px 80px;
+  }
+
+  .hero h1 {
+    font-size: 45px;
+
+    letter-spacing: -1.8px;
+  }
+
+  .heroDescription {
+    font-size: 14px;
+
+    max-width: 600px;
+  }
+
+  .desktopBreak {
+    display: none;
+  }
+
+  .videoCard {
+    width: 100%;
+
+    height: 290px;
+
+    margin-top: 42px;
+  }
+
+  .howSection {
+    padding:
+      20px 18px 90px;
+  }
+
+  .sectionHeader h2 {
+    font-size: 32px;
+  }
+
+  .sectionHeader p {
+    font-size: 13px;
+  }
+
+  .stepsGrid {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-top: 32px;
+  }
+
+  .stepCard {
+    min-height: 165px;
+
+    padding: 17px;
+  }
+
+  .stepCard h3 {
+    font-size: 15px;
+  }
+
+  .stepCard p {
+    font-size: 12px;
+  }
+
+  .ctaCard {
+    padding: 32px 22px;
+  }
+
+  .ctaCard h2 {
+    font-size: 29px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 500px) {
+
+  .hero {
+    padding-top: 45px;
+  }
+
+  .badge {
+    font-size: 11px;
+
+    padding: 7px 12px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+
+    line-height: 1.08;
+
+    letter-spacing: -1.4px;
+  }
+
+  .heroDescription {
+    font-size: 13px;
+
+    line-height: 1.65;
+  }
+
+  .heroButtons {
+    width: 100%;
+
+    flex-direction: column;
+
+    gap: 9px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+
+    min-height: 46px;
+  }
+
+  .videoCard {
+    height: 250px;
+  }
+
+  .stepsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .stepCard {
+    min-height: auto;
+  }
+
+  .ctaCard h2 {
+    font-size: 26px;
+  }
+
+  .ctaCard p {
+    font-size: 12px;
+  }
+
+  .footer {
+    min-height: 95px;
+
+    padding:
+      18px 20px;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 10px;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL SCREENS
+   ========================================= */
+
+@media (max-width: 360px) {
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .sectionHeader h2 {
+    font-size: 28px;
+  }
+
+  .ctaCard h2 {
+    font-size: 24px;
+  }
+}
