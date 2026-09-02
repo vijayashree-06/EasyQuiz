@@ -15,7 +15,6 @@ import { Link, useNavigate } from "react-router-dom"
 
 import styles from "./Dashboard.module.css"
 
-
 function Dashboard() {
   const navigate = useNavigate()
 
@@ -43,11 +42,13 @@ function Dashboard() {
     },
   ]
 
-
+  // Logout
   function handleLogout() {
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+
     navigate("/login")
   }
-
 
   return (
     <div className={styles.dashboard}>
@@ -61,15 +62,12 @@ function Dashboard() {
         {/* Logo */}
 
         <Link to="/" className={styles.logo}>
-
           <div className={styles.logoIcon}>
             <BookOpen size={23} />
           </div>
 
           <span>EasyQuiz</span>
-
         </Link>
-
 
         {/* Navigation */}
 
@@ -83,7 +81,6 @@ function Dashboard() {
             <span>Dashboard</span>
           </Link>
 
-
           <Link
             to="/upload"
             className={styles.navItem}
@@ -91,7 +88,6 @@ function Dashboard() {
             <Upload size={19} />
             <span>New Quiz</span>
           </Link>
-
 
           <Link
             to="/transcript"
@@ -101,7 +97,6 @@ function Dashboard() {
             <span>Transcript</span>
           </Link>
 
-
           <Link
             to="/notes"
             className={styles.navItem}
@@ -109,7 +104,6 @@ function Dashboard() {
             <BookOpen size={19} />
             <span>Notes</span>
           </Link>
-
 
           <Link
             to="/quiz"
@@ -120,7 +114,6 @@ function Dashboard() {
           </Link>
 
         </nav>
-
 
         {/* Logout */}
 
@@ -133,7 +126,6 @@ function Dashboard() {
         </button>
 
       </aside>
-
 
       {/* =====================================
           MAIN CONTENT
@@ -153,7 +145,6 @@ function Dashboard() {
             </p>
           </div>
 
-
           <Link
             to="/upload"
             className={styles.newQuizButton}
@@ -163,7 +154,6 @@ function Dashboard() {
           </Link>
 
         </header>
-
 
         {/* =====================================
             STATISTICS
@@ -189,7 +179,6 @@ function Dashboard() {
 
           </div>
 
-
           {/* Average */}
 
           <div className={styles.statCard}>
@@ -208,7 +197,6 @@ function Dashboard() {
 
           </div>
 
-
           {/* Study Time */}
 
           <div className={styles.statCard}>
@@ -226,7 +214,6 @@ function Dashboard() {
             </div>
 
           </div>
-
 
           {/* Notes */}
 
@@ -247,7 +234,6 @@ function Dashboard() {
           </div>
 
         </section>
-
 
         {/* =====================================
             RECENT QUIZZES
@@ -273,7 +259,6 @@ function Dashboard() {
 
           </div>
 
-
           {/* Quiz List */}
 
           <div className={styles.quizList}>
@@ -297,7 +282,6 @@ function Dashboard() {
 
                 </div>
 
-
                 <div className={styles.quizResult}>
 
                   <div className={styles.scoreInfo}>
@@ -311,7 +295,6 @@ function Dashboard() {
                     </span>
 
                   </div>
-
 
                   <div
                     className={`${styles.grade} ${
@@ -332,7 +315,6 @@ function Dashboard() {
           </div>
 
         </section>
-
 
         {/* =====================================
             BOTTOM CTA
@@ -368,6 +350,5 @@ function Dashboard() {
     </div>
   )
 }
-
 
 export default Dashboard

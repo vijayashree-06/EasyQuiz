@@ -1,5 +1,6 @@
 .page {
   min-height: 100vh;
+
   background:
     radial-gradient(
       circle at 78% 5%,
@@ -7,6 +8,7 @@
       transparent 25%
     ),
     #0d0d0f;
+
   color: #f5f3f8;
 }
 
@@ -16,6 +18,7 @@
   position: fixed;
   top: 0;
   left: 0;
+
   width: 280px;
   height: 100vh;
 
@@ -23,6 +26,7 @@
   flex-direction: column;
 
   background: rgba(16, 16, 20, 0.96);
+
   border-right: 1px solid rgba(255, 255, 255, 0.06);
 
   z-index: 20;
@@ -34,13 +38,16 @@
 
   display: flex;
   align-items: center;
+
   gap: 11px;
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 
   color: #f4f1f8;
+
   font-size: 21px;
   font-weight: 750;
+
   letter-spacing: -0.5px;
 }
 
@@ -68,8 +75,10 @@
 
 .navigation {
   padding: 24px 17px;
+
   display: flex;
   flex-direction: column;
+
   gap: 6px;
 }
 
@@ -79,6 +88,7 @@
 
   display: flex;
   align-items: center;
+
   gap: 15px;
 
   border-radius: 14px;
@@ -133,6 +143,7 @@
 
   display: flex;
   align-items: center;
+
   gap: 15px;
 
   border: none;
@@ -157,6 +168,7 @@
 
 .main {
   margin-left: 280px;
+
   min-height: 100vh;
 
   padding: 34px 36px 60px;
@@ -181,6 +193,7 @@
   line-height: 1.15;
 
   font-weight: 750;
+
   letter-spacing: -0.9px;
 }
 
@@ -192,6 +205,7 @@
 .headerActions {
   display: flex;
   align-items: center;
+
   gap: 13px;
 }
 
@@ -202,6 +216,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: 9px;
 
   border-radius: 11px;
@@ -219,6 +234,7 @@
   padding: 0 18px;
 
   border: 1px solid #352943;
+
   background: rgba(18, 16, 23, 0.85);
 
   color: #e5e0ea;
@@ -226,6 +242,7 @@
 
 .copyButton:hover {
   border-color: #654184;
+
   background: rgba(34, 25, 43, 0.9);
 }
 
@@ -262,9 +279,11 @@
 
   display: flex;
   align-items: center;
+
   gap: 18px;
 
   border: 1px solid #242129;
+
   border-radius: 14px;
 
   background:
@@ -299,26 +318,37 @@
   color: #a85cff;
 }
 
+.videoInfo {
+  min-width: 0;
+}
+
 .videoInfo h2 {
   margin-bottom: 10px;
 
   font-size: 23px;
   font-weight: 700;
+
   letter-spacing: -0.5px;
+
+  /* IMPORTANT for long YouTube titles */
+  overflow-wrap: anywhere;
 }
 
 .videoMeta {
   display: flex;
   align-items: center;
+
   gap: 25px;
 
   color: #8d8795;
+
   font-size: 14px;
 }
 
 .videoMeta span {
   display: flex;
   align-items: center;
+
   gap: 7px;
 }
 
@@ -330,6 +360,7 @@
 
 .transcriptCard {
   border: 1px solid #242129;
+
   border-radius: 14px;
 
   background:
@@ -351,6 +382,7 @@
 
   font-size: 27px;
   font-weight: 750;
+
   letter-spacing: -0.7px;
 }
 
@@ -370,6 +402,7 @@
 
   display: flex;
   flex-direction: column;
+
   gap: 17px;
 }
 
@@ -393,15 +426,23 @@
 /* TRANSCRIPT ITEM */
 
 .transcriptItem {
+  /*
+    CHANGED:
+    min-height instead of fixed height
+    so long transcript text can grow.
+  */
   min-height: 62px;
+  height: auto;
 
   padding: 17px 25px;
 
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+
   gap: 27px;
 
   border: 1px solid #242229;
+
   border-radius: 13px;
 
   background: rgba(22, 21, 25, 0.8);
@@ -409,10 +450,19 @@
   transition:
     background 0.2s ease,
     border-color 0.2s ease;
+
+  /*
+    IMPORTANT:
+    Allows flex children to shrink properly.
+  */
+  min-width: 0;
+
+  flex-shrink: 0;
 }
 
 .transcriptItem:hover {
   background: rgba(29, 26, 34, 0.95);
+
   border-color: #30283a;
 }
 
@@ -424,6 +474,7 @@
   padding: 0;
 
   border: none;
+
   background: transparent;
 
   color: #ae65ff;
@@ -432,30 +483,54 @@
   font-weight: 600;
 
   cursor: pointer;
+
+  line-height: 1.55;
 }
 
 .timestamp:hover {
   color: #ce9bff;
 }
 
+/*
+  IMPORTANT FIX
+
+  The paragraph is now allowed to take
+  as many lines as necessary.
+*/
+
 .transcriptItem p {
+  flex: 1;
+
+  min-width: 0;
+
+  margin: 0;
+
   color: #d9d5dd;
 
   font-size: 16px;
+
   line-height: 1.55;
 
   font-weight: 450;
+
+  white-space: normal;
+
+  overflow-wrap: anywhere;
+
+  word-break: normal;
 }
 
 /* RESPONSIVE */
 
 @media (max-width: 1100px) {
+
   .sidebar {
     width: 235px;
   }
 
   .main {
     margin-left: 235px;
+
     padding: 30px 25px 50px;
   }
 
@@ -469,17 +544,20 @@
 }
 
 @media (max-width: 850px) {
+
   .sidebar {
     width: 210px;
   }
 
   .main {
     margin-left: 210px;
+
     padding: 25px 20px;
   }
 
   .header {
     align-items: flex-start;
+
     gap: 20px;
   }
 
@@ -493,13 +571,16 @@
 
   .generateButton {
     width: 44px;
+
     padding: 0;
   }
 }
 
 @media (max-width: 700px) {
+
   .sidebar {
     position: relative;
+
     width: 100%;
     height: auto;
   }
@@ -510,7 +591,9 @@
 
   .navigation {
     flex-direction: row;
+
     overflow-x: auto;
+
     padding: 12px;
   }
 
@@ -524,6 +607,7 @@
 
   .main {
     margin-left: 0;
+
     padding: 24px 15px 40px;
   }
 
@@ -541,6 +625,7 @@
 
   .generateButton {
     width: auto;
+
     padding: 0 17px;
   }
 
@@ -571,16 +656,21 @@
 
   .transcriptItem {
     padding: 15px;
+
     align-items: flex-start;
+
     gap: 15px;
   }
 
   .transcriptItem p {
     font-size: 14px;
+
+    line-height: 1.6;
   }
 }
 
 @media (max-width: 480px) {
+
   .videoCard {
     align-items: flex-start;
   }
@@ -596,7 +686,9 @@
 
   .videoMeta {
     flex-direction: column;
+
     align-items: flex-start;
+
     gap: 6px;
   }
 
@@ -610,6 +702,7 @@
 
   .timestamp {
     width: 35px;
+
     font-size: 12px;
   }
 }

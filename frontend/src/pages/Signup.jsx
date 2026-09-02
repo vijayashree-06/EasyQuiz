@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import axios from "axios"
 import {
   Brain,
   User,
@@ -21,14 +22,37 @@ function Signup() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  function handleSubmit(e) {
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+
+  async function handleSubmit(e) {
     e.preventDefault()
 
-    // Temporary frontend signup
-    // Backend authentication will be connected later.
+    setError("")
+    setLoading(true)
 
-    if (name && email && password) {
-      navigate("/dashboard")
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/signup",
+        {
+          name,
+          email,
+          password,
+        }
+      )
+
+      console.log(response.data)
+
+      alert("Account created successfully!")
+
+      navigate("/login")
+    } catch (error) {
+      setError(
+        error.response?.data?.message ||
+          "Something went wrong. Please try again."
+      )
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -49,7 +73,6 @@ function Signup() {
           <span>EasyQuiz</span>
         </Link>
 
-
         {/* Signup Card */}
         <div className={styles.card}>
 
@@ -61,6 +84,12 @@ function Signup() {
             </p>
           </div>
 
+          {/* Error message */}
+          {error && (
+            <div className={styles.error}>
+              {error}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit}>
 
@@ -93,7 +122,6 @@ function Signup() {
 
             </div>
 
-
             {/* EMAIL */}
             <div className={styles.field}>
 
@@ -123,7 +151,6 @@ function Signup() {
 
             </div>
 
-
             {/* PASSWORD */}
             <div className={styles.field}>
 
@@ -151,6 +178,7 @@ function Signup() {
                     setPassword(e.target.value)
                   }
                   required
+                  minLength={6}
                 />
 
                 <button
@@ -171,21 +199,22 @@ function Signup() {
 
             </div>
 
-
             {/* CREATE ACCOUNT */}
             <button
               type="submit"
               className={styles.createButton}
+              disabled={loading}
             >
               <span>
-                Create Account
+                {loading
+                  ? "Creating Account..."
+                  : "Create Account"}
               </span>
 
-              <ArrowRight size={20} />
+              {!loading && <ArrowRight size={20} />}
             </button>
 
           </form>
-
 
           {/* SIGN IN */}
           <p className={styles.loginText}>
@@ -196,7 +225,6 @@ function Signup() {
           </p>
 
         </div>
-
 
         {/* TERMS */}
         <p className={styles.terms}>

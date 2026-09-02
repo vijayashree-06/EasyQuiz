@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import axios from "axios"
 import {
   Brain,
   Mail,
@@ -18,13 +19,43 @@ function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  function handleSubmit(e) {
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+
+  async function handleSubmit(e) {
     e.preventDefault()
 
-    // Temporary frontend login
-    // Backend authentication will be connected later.
-    if (email && password) {
+    setError("")
+    setLoading(true)
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        {
+          email,
+          password,
+        }
+      )
+
+      console.log(response.data)
+
+      // Save JWT token
+      localStorage.setItem("token", response.data.token)
+
+      // Save user information
+      localStorage.setItem(
+        "user",
+        JSON.stringify(response.data.user)
+      )
+
       navigate("/dashboard")
+    } catch (error) {
+      setError(
+        error.response?.data?.message ||
+          "Invalid email or password"
+      )
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -52,6 +83,13 @@ function Login() {
             <p>Sign in to continue learning</p>
           </div>
 
+          {/* ERROR */}
+          {error && (
+            <div className={styles.error}>
+              {error}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit}>
 
             {/* EMAIL */}
@@ -59,14 +97,19 @@ function Login() {
               <label htmlFor="email">Email</label>
 
               <div className={styles.inputWrapper}>
-                <Mail size={21} className={styles.inputIcon} />
+                <Mail
+                  size={21}
+                  className={styles.inputIcon}
+                />
 
                 <input
                   id="email"
                   type="email"
                   placeholder="you@example.com"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) =>
+                    setEmail(e.target.value)
+                  }
                   required
                 />
               </div>
@@ -77,21 +120,32 @@ function Login() {
               <label htmlFor="password">Password</label>
 
               <div className={styles.inputWrapper}>
-                <Lock size={21} className={styles.inputIcon} />
+                <Lock
+                  size={21}
+                  className={styles.inputIcon}
+                />
 
                 <input
                   id="password"
-                  type={showPassword ? "text" : "password"}
+                  type={
+                    showPassword
+                      ? "text"
+                      : "password"
+                  }
                   placeholder="••••••••"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) =>
+                    setPassword(e.target.value)
+                  }
                   required
                 />
 
                 <button
                   type="button"
                   className={styles.eyeButton}
-                  onClick={() => setShowPassword(!showPassword)}
+                  onClick={() =>
+                    setShowPassword(!showPassword)
+                  }
                 >
                   {showPassword ? (
                     <EyeOff size={21} />
@@ -103,10 +157,18 @@ function Login() {
             </div>
 
             {/* SIGN IN */}
-            <button type="submit" className={styles.signInButton}>
-              <span>Sign In</span>
-              <ArrowRight size={20} />
+            <button
+              type="submit"
+              className={styles.signInButton}
+              disabled={loading}
+            >
+              <span>
+                {loading ? "Signing In..." : "Sign In"}
+              </span>
+
+              {!loading && <ArrowRight size={20} />}
             </button>
+
           </form>
 
           {/* SIGN UP */}
@@ -122,6 +184,7 @@ function Login() {
           <span>Terms of Service</span> and{" "}
           <span>Privacy Policy</span>.
         </p>
+
       </div>
     </main>
   )

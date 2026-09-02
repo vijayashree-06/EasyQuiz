@@ -1,3 +1,4 @@
+import React from "react"
 import {
   LayoutDashboard,
   Upload as UploadIcon,
@@ -9,24 +10,78 @@ import {
   Link as LinkIcon,
   ArrowRight,
 } from "lucide-react"
-
+import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import styles from "./Upload.module.css"
 
 function Upload() {
   const navigate = useNavigate()
 
+  const [loading, setLoading] = React.useState(false)
+
   // Handle YouTube link submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // For now, go to transcript page.
-    // Later we will send the YouTube URL to the backend.
-    navigate("/transcript")
+    const url = e.target.url.value
+
+    try {
+      setLoading(true)
+
+      const token = localStorage.getItem("token")
+
+      const response = await axios.post(
+        "http://localhost:5000/api/youtube/transcript",
+        {
+          url: url,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+
+      // Save transcript
+      localStorage.setItem(
+        "transcript",
+        response.data.transcript
+      )
+
+      // Save YouTube URL
+      localStorage.setItem("youtubeUrl", url)
+
+      // Save YouTube video title
+      localStorage.setItem(
+        "youtubeTitle",
+        response.data.title || "YouTube Video"
+      )
+
+      // Save number of transcript segments
+      localStorage.setItem(
+        "transcriptSegments",
+        response.data.segments || 0
+      )
+
+      // Go to transcript page
+      navigate("/transcript")
+    } catch (error) {
+      console.error("Transcript extraction error:", error)
+
+      alert(
+        error.response?.data?.message ||
+          "Failed to extract transcript. Please try again."
+      )
+    } finally {
+      setLoading(false)
+    }
   }
 
   // Handle logout
   const handleLogout = () => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+
     navigate("/login")
   }
 
@@ -45,7 +100,6 @@ function Upload() {
           <span>EasyQuiz</span>
         </Link>
 
-
         {/* Navigation */}
         <nav className={styles.navigation}>
 
@@ -58,7 +112,6 @@ function Upload() {
             <span>Dashboard</span>
           </Link>
 
-
           {/* New Quiz */}
           <Link
             to="/upload"
@@ -67,7 +120,6 @@ function Upload() {
             <UploadIcon size={19} />
             <span>New Quiz</span>
           </Link>
-
 
           {/* Transcript */}
           <Link
@@ -78,7 +130,6 @@ function Upload() {
             <span>Transcript</span>
           </Link>
 
-
           {/* Notes */}
           <Link
             to="/notes"
@@ -87,7 +138,6 @@ function Upload() {
             <BookOpen size={19} />
             <span>Notes</span>
           </Link>
-
 
           {/* Quiz */}
           <Link
@@ -100,7 +150,6 @@ function Upload() {
 
         </nav>
 
-
         {/* Logout */}
         <button
           className={styles.logout}
@@ -111,7 +160,6 @@ function Upload() {
         </button>
 
       </aside>
-
 
       {/* ================= MAIN CONTENT ================= */}
       <main className={styles.main}>
@@ -124,17 +172,14 @@ function Upload() {
             <Play size={34} />
           </div>
 
-
           {/* Heading */}
           <h1>Paste YouTube Link</h1>
-
 
           {/* Description */}
           <p className={styles.subtitle}>
             Enter any YouTube video URL to extract transcript
             and generate study materials
           </p>
-
 
           {/* ================= FORM ================= */}
           <form
@@ -149,25 +194,30 @@ function Upload() {
 
               <input
                 type="url"
+                name="url"
                 placeholder="https://youtube.com/watch?v=..."
                 required
+                disabled={loading}
               />
 
             </div>
-
 
             {/* Submit Button */}
             <button
               type="submit"
               className={styles.extractButton}
+              disabled={loading}
             >
-              <span>Extract Transcript</span>
+              <span>
+                {loading
+                  ? "Extracting Transcript..."
+                  : "Extract Transcript"}
+              </span>
 
-              <ArrowRight size={21} />
+              {!loading && <ArrowRight size={21} />}
             </button>
 
           </form>
-
 
           {/* ================= SUPPORTED VIDEOS ================= */}
           <div className={styles.supported}>
