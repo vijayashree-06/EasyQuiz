@@ -1,0 +1,842 @@
+.page {
+  min-height: 100vh;
+
+  display: flex;
+
+  background:
+    linear-gradient(
+      rgba(150, 80, 230, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(150, 80, 230, 0.025) 1px,
+      transparent 1px
+    ),
+    #0d0d0f;
+
+  background-size: 38px 38px;
+
+  color: #f5f3f8;
+}
+
+
+/* ================================
+   SIDEBAR
+================================ */
+
+.sidebar {
+  position: fixed;
+
+  left: 0;
+  top: 0;
+
+  width: 280px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  background: rgba(16, 15, 20, 0.94);
+
+  border-right:
+    1px solid
+    rgba(107, 74, 139, 0.25);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  z-index: 100;
+}
+
+
+/* ================================
+   LOGO
+================================ */
+
+.logo {
+  height: 105px;
+
+  padding: 0 26px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  border-bottom:
+    1px solid
+    rgba(107, 74, 139, 0.18);
+
+  color: #b96aff;
+
+  font-size: 25px;
+
+  font-weight: 750;
+
+  letter-spacing: -0.7px;
+}
+
+
+.logoIcon {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #9b55ed,
+      #c954ef
+    );
+
+  box-shadow:
+    0 8px 25px
+    rgba(151, 73, 236, 0.25);
+}
+
+
+/* ================================
+   NAVIGATION
+================================ */
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  padding: 25px 17px;
+}
+
+
+.navItem {
+  height: 49px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 0 18px;
+
+  border-radius: 11px;
+
+  color: #c4bdcd;
+
+  font-size: 16px;
+
+  font-weight: 550;
+
+  transition: 0.2s ease;
+}
+
+
+.navItem svg {
+  color: #aaa2b4;
+
+  flex-shrink: 0;
+}
+
+
+.navItem:hover {
+  background:
+    rgba(152, 79, 224, 0.09);
+
+  color: white;
+
+  transform: translateX(2px);
+}
+
+
+.navItem:hover svg {
+  color: #b96aff;
+}
+
+
+/* Active New Quiz */
+
+.navItem.active {
+  color: #cda3ff;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(122, 50, 190, 0.30),
+      rgba(122, 50, 190, 0.17)
+    );
+
+  box-shadow:
+    inset 0 0 20px
+    rgba(143, 65, 207, 0.07);
+}
+
+
+.navItem.active svg {
+  color: #b86aff;
+}
+
+
+/* ================================
+   LOGOUT
+================================ */
+
+.logout {
+  margin-top: auto;
+
+  width: 100%;
+  height: 70px;
+
+  padding: 0 28px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  border: none;
+
+  border-top:
+    1px solid
+    rgba(107, 74, 139, 0.18);
+
+  background: transparent;
+
+  color: #aaa2b4;
+
+  font-size: 16px;
+
+  font-weight: 550;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.logout:hover {
+  color: #ff7c8c;
+
+  background:
+    rgba(255, 80, 100, 0.04);
+}
+
+
+/* ================================
+   MAIN
+================================ */
+
+.main {
+  position: relative;
+
+  margin-left: 280px;
+
+  width: calc(100% - 280px);
+
+  min-height: 100vh;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding:
+    64px 45px 70px;
+
+  overflow: hidden;
+}
+
+
+/* Background glow */
+
+.main::before {
+  content: "";
+
+  position: absolute;
+
+  width: 650px;
+  height: 500px;
+
+  left: 50%;
+  top: 40%;
+
+  transform:
+    translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(137, 60, 202, 0.13),
+      transparent 68%
+    );
+
+  filter: blur(35px);
+
+  pointer-events: none;
+}
+
+
+/* ================================
+   UPLOAD CARD
+================================ */
+
+.uploadCard {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(100%, 820px);
+
+  padding:
+    40px 42px 32px;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(27, 25, 34, 0.78),
+      rgba(14, 13, 18, 0.86)
+    );
+
+  border:
+    1px solid
+    rgba(155, 85, 237, 0.72);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  box-shadow:
+    0 20px 60px
+    rgba(0, 0, 0, 0.28),
+
+    0 0 35px
+    rgba(130, 55, 190, 0.08);
+}
+
+
+/* ================================
+   YOUTUBE ICON
+================================ */
+
+.youtubeIcon {
+  width: 70px;
+  height: 70px;
+
+  margin: 0 auto 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  color: #a85cff;
+
+  background:
+    rgba(119, 61, 165, 0.25);
+
+  box-shadow:
+    0 0 25px
+    rgba(153, 75, 218, 0.10);
+}
+
+
+/* ================================
+   TITLE
+================================ */
+
+.uploadCard h1 {
+  margin: 0;
+
+  text-align: center;
+
+  color: #f3eff7;
+
+  font-size: 34px;
+
+  line-height: 1.2;
+
+  font-weight: 750;
+
+  letter-spacing: -1px;
+}
+
+
+.subtitle {
+  max-width: 700px;
+
+  margin:
+    12px auto 35px;
+
+  text-align: center;
+
+  color: #8c849b;
+
+  font-size: 17px;
+
+  line-height: 1.6;
+}
+
+
+/* ================================
+   FORM
+================================ */
+
+.form {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+
+/* ================================
+   INPUT
+================================ */
+
+.inputWrapper {
+  height: 61px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 0 18px;
+
+  border-radius: 12px;
+
+  background:
+    rgba(18, 17, 23, 0.85);
+
+  border:
+    1px solid
+    rgba(91, 76, 112, 0.40);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.inputWrapper svg {
+  color: #625b6e;
+
+  flex-shrink: 0;
+}
+
+
+.inputWrapper:focus-within {
+  border-color:
+    rgba(167, 91, 242, 0.72);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(155, 85, 237, 0.08);
+}
+
+
+.inputWrapper input {
+  width: 100%;
+
+  height: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #eeeaf2;
+
+  font-size: 17px;
+}
+
+
+.inputWrapper input::placeholder {
+  color: #746d80;
+}
+
+
+/* ================================
+   EXTRACT BUTTON
+================================ */
+
+.extractButton {
+  width: 100%;
+
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 11px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      100deg,
+      #9855eb,
+      #c955ef
+    );
+
+  font-size: 18px;
+
+  font-weight: 650;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 30px
+    rgba(151, 73, 236, 0.20);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.extractButton:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 38px
+    rgba(151, 73, 236, 0.32);
+}
+
+
+.extractButton:active {
+  transform: translateY(0);
+}
+
+
+/* ================================
+   SUPPORTED VIDEOS
+================================ */
+
+.supported {
+  margin-top: 35px;
+
+  padding:
+    21px 20px;
+
+  border-radius: 12px;
+
+  background:
+    rgba(25, 23, 31, 0.72);
+
+  border:
+    1px solid
+    rgba(91, 76, 112, 0.28);
+}
+
+
+.supported h2 {
+  margin: 0 0 11px;
+
+  color: #e9e5ed;
+
+  font-size: 17px;
+
+  font-weight: 650;
+}
+
+
+.supported ul {
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.supported li {
+  position: relative;
+
+  padding-left: 17px;
+
+  margin-top: 7px;
+
+  color: #837b90;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+}
+
+
+.supported li::before {
+  content: "•";
+
+  position: absolute;
+
+  left: 0;
+
+  color: #8f54d6;
+
+  font-size: 17px;
+}
+
+
+/* ================================
+   LARGE DESKTOP
+================================ */
+
+@media (min-width: 1500px) {
+
+  .main {
+    padding-top: 75px;
+  }
+
+  .uploadCard {
+    width: 850px;
+
+    padding:
+      45px 48px 35px;
+  }
+
+  .uploadCard h1 {
+    font-size: 37px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 1100px) {
+
+  .sidebar {
+    width: 235px;
+  }
+
+  .main {
+    margin-left: 235px;
+
+    width: calc(100% - 235px);
+
+    padding:
+      45px 25px;
+  }
+
+  .logo {
+    padding: 0 20px;
+
+    font-size: 22px;
+  }
+
+  .navItem {
+    font-size: 14px;
+  }
+
+  .uploadCard {
+    padding:
+      36px 32px 30px;
+  }
+}
+
+
+/* ================================
+   SMALL TABLET
+================================ */
+
+@media (max-width: 800px) {
+
+  .sidebar {
+    width: 205px;
+  }
+
+  .main {
+    margin-left: 205px;
+
+    width: calc(100% - 205px);
+
+    padding:
+      35px 18px;
+  }
+
+  .uploadCard h1 {
+    font-size: 29px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 650px) {
+
+  .page {
+    display: block;
+  }
+
+
+  .sidebar {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    border-right: none;
+
+    border-bottom:
+      1px solid
+      rgba(107, 74, 139, 0.25);
+  }
+
+
+  .logo {
+    height: 75px;
+
+    padding: 0 20px;
+  }
+
+
+  .navigation {
+    padding:
+      12px 15px;
+
+    flex-direction: row;
+
+    overflow-x: auto;
+  }
+
+
+  .navItem {
+    flex-shrink: 0;
+
+    padding:
+      0 14px;
+  }
+
+
+  .logout {
+    display: none;
+  }
+
+
+  .main {
+    margin-left: 0;
+
+    width: 100%;
+
+    min-height: calc(100vh - 75px);
+
+    padding:
+      28px 15px 40px;
+  }
+
+
+  .uploadCard {
+    padding:
+      30px 18px 22px;
+  }
+
+
+  .youtubeIcon {
+    width: 60px;
+    height: 60px;
+  }
+
+
+  .uploadCard h1 {
+    font-size: 27px;
+  }
+
+
+  .subtitle {
+    margin-bottom: 27px;
+
+    font-size: 14px;
+  }
+
+
+  .inputWrapper {
+    height: 56px;
+
+    padding: 0 14px;
+  }
+
+
+  .inputWrapper input {
+    font-size: 14px;
+  }
+
+
+  .extractButton {
+    height: 56px;
+
+    font-size: 16px;
+  }
+
+
+  .supported {
+    margin-top: 25px;
+
+    padding: 18px 16px;
+  }
+
+
+  .supported li {
+    font-size: 13px;
+  }
+}
+
+
+/* ================================
+   VERY SMALL MOBILE
+================================ */
+
+@media (max-width: 420px) {
+
+  .navItem span {
+    display: none;
+  }
+
+
+  .navItem {
+    width: 48px;
+
+    justify-content: center;
+
+    padding: 0;
+  }
+
+
+  .uploadCard h1 {
+    font-size: 24px;
+  }
+
+
+  .youtubeIcon {
+    margin-bottom: 18px;
+  }
+}

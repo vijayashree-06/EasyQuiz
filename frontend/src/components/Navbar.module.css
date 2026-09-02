@@ -1,0 +1,421 @@
+/* =========================================
+   EASYQUIZ NAVBAR
+   ========================================= */
+
+.navbar {
+  width: 100%;
+  height: 76px;
+
+  padding: 0 48px;
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  z-index: 100;
+
+  background: rgba(13, 13, 15, 0.92);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* =========================================
+   LOGO
+   ========================================= */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+
+  color: #f5f3f8;
+
+  font-size: 22px;
+  font-weight: 750;
+
+  letter-spacing: -0.7px;
+}
+
+
+.logoIcon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: linear-gradient(
+    135deg,
+    #9b55ed,
+    #cf54eb
+  );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 6px 20px rgba(159, 77, 237, 0.22);
+}
+
+
+.logoText {
+  line-height: 1;
+}
+
+.logoText span {
+  background: linear-gradient(
+    90deg,
+    #a855f7,
+    #d15af0
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+
+/* =========================================
+   CENTER NAVIGATION
+   ========================================= */
+
+.navLinks {
+  display: flex;
+  align-items: center;
+
+  gap: 38px;
+
+  margin-left: 85px;
+}
+
+
+.navLink {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 76px;
+
+  color: #9a94a2;
+
+  font-size: 15px;
+  font-weight: 550;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.2s ease;
+}
+
+
+.navLink:hover {
+  color: #ffffff;
+}
+
+
+/* Active / Home indicator */
+
+.navLink:first-child {
+  color: #ffffff;
+}
+
+
+.navLink:first-child::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 22px;
+  height: 2px;
+
+  transform: translateX(-50%);
+
+  border-radius: 10px;
+
+  background: #a855f7;
+
+  box-shadow:
+    0 0 10px rgba(168, 85, 247, 0.65);
+}
+
+
+/* =========================================
+   RIGHT ACTIONS
+   ========================================= */
+
+.actions {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+/* =========================================
+   THEME BUTTON
+   ========================================= */
+
+.themeButton {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #29262f;
+  border-radius: 9px;
+
+  background: rgba(20, 20, 24, 0.8);
+
+  color: #aaa3b0;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.themeButton:hover {
+  color: #ffffff;
+
+  border-color: #563273;
+
+  background: rgba(42, 25, 55, 0.65);
+}
+
+
+/* =========================================
+   SIGN IN
+   ========================================= */
+
+.loginButton {
+  min-height: 40px;
+
+  padding: 0 16px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  border: 1px solid #2b2831;
+  border-radius: 9px;
+
+  background: rgba(18, 18, 22, 0.8);
+
+  color: #ddd8e3;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.loginButton:hover {
+  color: #ffffff;
+
+  border-color: #674087;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   GET STARTED
+   ========================================= */
+
+.signupButton {
+  min-height: 40px;
+
+  padding: 0 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  border-radius: 9px;
+
+  background: linear-gradient(
+    100deg,
+    #9b55ed,
+    #c752ee
+  );
+
+  border: 1px solid transparent;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 7px 22px rgba(151, 73, 236, 0.16);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.signupButton:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 10px 28px rgba(151, 73, 236, 0.28);
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 1050px) {
+
+  .navbar {
+    padding: 0 30px;
+  }
+
+  .navLinks {
+    margin-left: 45px;
+
+    gap: 27px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 800px) {
+
+  .navbar {
+    height: 68px;
+
+    padding: 0 20px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .logoIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+
+  .themeButton {
+    width: 38px;
+    height: 38px;
+  }
+
+  .loginButton {
+    min-height: 38px;
+
+    padding: 0 12px;
+
+    font-size: 13px;
+  }
+
+  .signupButton {
+    min-height: 38px;
+
+    padding: 0 13px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 520px) {
+
+  .navbar {
+    padding: 0 15px;
+  }
+
+  .logo {
+    font-size: 18px;
+
+    gap: 7px;
+  }
+
+  .logoIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .themeButton {
+    display: none;
+  }
+
+  .loginButton {
+    padding: 0 11px;
+  }
+
+  .signupButton {
+    padding: 0 12px;
+  }
+}
+
+
+@media (max-width: 400px) {
+
+  .loginButton span {
+    display: none;
+  }
+
+  .loginButton {
+    width: 38px;
+    padding: 0;
+  }
+
+  .signupButton span {
+    display: none;
+  }
+
+  .signupButton {
+    width: 38px;
+    padding: 0;
+  }
+}
