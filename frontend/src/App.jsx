@@ -5,6 +5,7 @@ import {
 } from "react-router-dom"
 
 import Navbar from "./components/Navbar"
+import ProtectedRoute from "./components/ProtectedRoute"
 
 import Landing from "./pages/Landing"
 import Login from "./pages/Login"
@@ -29,13 +30,20 @@ function App() {
       {showNavbar && <Navbar />}
 
       <Routes>
-        {/* Landing */}
+
+        {/* ==================== */}
+        {/* Landing Page */}
+        {/* ==================== */}
+
         <Route
           path="/"
           element={<Landing />}
         />
 
+        {/* ==================== */}
         {/* Authentication */}
+        {/* ==================== */}
+
         <Route
           path="/login"
           element={<Login />}
@@ -46,50 +54,89 @@ function App() {
           element={<Signup />}
         />
 
+        {/* ==================== */}
+        {/* Protected Pages */}
+        {/* ==================== */}
+
         {/* Dashboard */}
         <Route
           path="/dashboard"
-          element={<Dashboard />}
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
         />
 
-        {/* Learning Flow */}
+        {/* Upload / Create Quiz */}
         <Route
           path="/upload"
-          element={<Upload />}
+          element={
+            <ProtectedRoute>
+              <Upload />
+            </ProtectedRoute>
+          }
         />
 
+        {/* Transcript */}
         <Route
           path="/transcript"
-          element={<Transcript />}
+          element={
+            <ProtectedRoute>
+              <Transcript />
+            </ProtectedRoute>
+          }
         />
 
+        {/* Notes */}
         <Route
           path="/notes"
-          element={<Notes />}
+          element={
+            <ProtectedRoute>
+              <Notes />
+            </ProtectedRoute>
+          }
         />
 
+        {/* Quiz */}
         <Route
           path="/quiz"
-          element={<Quiz />}
+          element={
+            <ProtectedRoute>
+              <Quiz />
+            </ProtectedRoute>
+          }
         />
 
-        {/* Quiz Result */}
+        {/* Score */}
         <Route
           path="/score"
-          element={<Score />}
+          element={
+            <ProtectedRoute>
+              <Score />
+            </ProtectedRoute>
+          }
         />
 
-        {/* Answer Review */}
+        {/* Review Answers */}
         <Route
           path="/review"
-          element={<Review />}
+          element={
+            <ProtectedRoute>
+              <Review />
+            </ProtectedRoute>
+          }
         />
 
+        {/* ==================== */}
         {/* Fallback */}
+        {/* ==================== */}
+
         <Route
           path="*"
           element={<Landing />}
         />
+
       </Routes>
     </>
   )
